@@ -135,7 +135,7 @@ print("\n!*是否建立csv(Y/N,預設N)*!")
 if input() == 'Y':
     import csv
     try:
-        with open(os.path.split(dir_path)[-1]+"_content.csv", "w", newline='') as file:
+        with open(os.path.split(dir_path)[-1]+"_content.csv", "w", newline='', encoding='UTF-8') as file:
             fieldnames = ["name", "type", "size","atime","mtime","ctime","path"]    # 定義欄位
             writer = csv.DictWriter(file, fieldnames=fieldnames)                    # 將 dictionary 寫入 CSV 檔
             writer.writeheader()                                                    # 寫入第一列的欄位名稱
