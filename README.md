@@ -1,1 +1,1 @@
-# list-all-files-of-a-directory
+list-file-of-directory
