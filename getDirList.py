@@ -135,21 +135,25 @@ if input() == 'Y':
 print("\n!*是否建立csv(Y/N,預設N)*!")
 if input() == 'Y':
     import csv
-    with open(os.path.split(dir_path)[-1]+"_content.csv", "w", newline='') as file:
-        fieldnames = ["name", "type", "size","atime","mtime","ctime","path"]    # 定義欄位
-        writer = csv.DictWriter(file, fieldnames=fieldnames)                    # 將 dictionary 寫入 CSV 檔
-        writer.writeheader()                                                    # 寫入第一列的欄位名稱
-        for file in entries:
-            writer.writerow(
-                {
-                "name": file.name,
-                "type": file.suffix[1:],
-                "size": file.stat().st_size,
-                "atime": file.stat().st_atime,
-                "mtime": file.stat().st_mtime,
-                "ctime": file.stat().st_ctime,
-                "path": str(file.absolute()),
-                })
+    try:
+        with open(os.path.split(dir_path)[-1]+"_content.csv", "w", newline='') as file:
+            fieldnames = ["name", "type", "size","atime","mtime","ctime","path"]    # 定義欄位
+            writer = csv.DictWriter(file, fieldnames=fieldnames)                    # 將 dictionary 寫入 CSV 檔
+            writer.writeheader()                                                    # 寫入第一列的欄位名稱
+            for file in entries:
+                writer.writerow(
+                    {
+                    "name": file.name,
+                    "type": file.suffix[1:],
+                    "size": file.stat().st_size,
+                    "atime": file.stat().st_atime,
+                    "mtime": file.stat().st_mtime,
+                    "ctime": file.stat().st_ctime,
+                    "path": str(file.absolute()),
+                    })
+        print("**建立csv成功**")
+        print("**檔案位置: "+str(os.path.join(dir_path,os.path.split(dir_path)[-1]+"_content.csv"))+" **")
+    except:
+        print("**建立csv失敗**")
 
-
-    print('BYE')
+    print('\nBYE!')
