@@ -75,7 +75,6 @@ entries = Path(dir_path)
 print("!*是否選擇排序方式(數字以外預設0)?")
 print("(依據名稱:0, 依據修改時間:1, 依據建立時間:2, 依據檔案大小:3, 依照檔案類型:4)")
 sort_type = input()
-print(sort_type)
 if sort_type == '1':
     entries = sorted(entries.iterdir(),key = lambda s: s.stat().st_mtime)
 elif sort_type == '2':
